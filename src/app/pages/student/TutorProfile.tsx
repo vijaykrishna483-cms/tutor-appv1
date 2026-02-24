@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router";
 import { MobileContainer } from "../../components/MobileContainer";
 import { ChevronLeft, Star, Award, BookOpen, MapPin, Play, MessageCircle, Heart, Share2, ShieldCheck, IndianRupee, ArrowRight } from "lucide-react";
 
+const BG_IMAGE_PROFILE = "https://i.pinimg.com/1200x/e4/b2/6f/e4b26fba826504333eef2dd021a7de66.jpg";
+
 const tutor = {
   name: "Dr. Priya Sharma",
   rating: 4.8,
@@ -35,11 +37,11 @@ export function TutorProfile() {
 
   return (
     <MobileContainer>
-      <div className="min-h-screen bg-[#FBFCFF] pb-40">
-        {/* Editorial Header */}
+      <div className="min-h-screen bg-[#FBFCFF] pb-40 relative overflow-hidden">
+        {/* Editorial Header - Premium Image Integration */}
         <div className="h-[45vh] relative group overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544717297-fa95b3697628?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-105 transition-transform duration-[3s]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FBFCFF] via-[#FBFCFF]/20 to-black/40" />
+          <div className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-[5s] ease-out" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})` }} />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FBFCFF] via-[#FBFCFF]/40 to-black/30" />
           
           <div className="absolute top-12 left-6 right-6 flex justify-between items-center z-20">
             <button 
@@ -81,8 +83,11 @@ export function TutorProfile() {
 
         {/* Floating Detail Matrix */}
         <div className="px-6 -mt-10 relative z-30">
-          <div className="bg-white rounded-[2.8rem] p-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)] border border-border/30 mb-10">
-            <div className="grid grid-cols-2 gap-8">
+          <div className="bg-white/95 backdrop-blur-3xl rounded-[2.8rem] p-8 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] border border-white mb-10 overflow-hidden relative group">
+            {/* Subtle Texture for Matrix Card */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-1000" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+            
+            <div className="relative z-10 grid grid-cols-2 gap-8">
               <div className="flex flex-col gap-2">
                 <p className="text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground/50">Instructional Rate</p>
                 <div className="flex items-baseline gap-1.5">
@@ -99,9 +104,9 @@ export function TutorProfile() {
               </div>
             </div>
 
-            <div className="h-[1px] w-full bg-border/40 my-8" />
+            <div className="relative z-10 h-[1px] w-full bg-border/40 my-8" />
 
-            <div className="flex justify-between items-center bg-secondary/30 p-5 rounded-[1.8rem]">
+            <div className="relative z-10 flex justify-between items-center bg-secondary/30 p-5 rounded-[1.8rem] border border-primary/5">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
                   <BookOpen className="w-5 h-5 text-primary" />
@@ -120,12 +125,12 @@ export function TutorProfile() {
           </div>
 
           {/* Luxury Tab Switcher */}
-          <div className="flex gap-2 mb-10 bg-white shadow-xl shadow-black/[0.03] p-2 rounded-full border border-border/30">
+          <div className="flex gap-2 mb-10 bg-white/80 backdrop-blur-xl shadow-xl shadow-black/[0.03] p-2 rounded-full border border-white">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 py-3.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === tab.id ? "bg-primary text-white shadow-xl shadow-primary/20 scale-105" : "text-muted-foreground/60 hover:text-primary"}`}
+                className={`flex-1 py-3.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 ${activeTab === tab.id ? "bg-primary text-white shadow-xl shadow-primary/20" : "text-muted-foreground/60 hover:text-primary"}`}
               >
                 {tab.label}
               </button>
@@ -145,19 +150,21 @@ export function TutorProfile() {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-5">
-                  <div className="bg-white p-7 rounded-[2.2rem] border border-border/30 shadow-sm hover:shadow-xl transition-shadow group">
-                    <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="bg-white p-7 rounded-[2.2rem] border border-border/30 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+                    <div className="relative z-10 w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
-                    <h4 className="text-[10px] font-black uppercase tracking-widest text-foreground mb-2">Improvement</h4>
-                    <p className="text-[10px] font-bold text-muted-foreground/60 leading-relaxed uppercase tracking-widest">Guaranteed score upliftment or partial refund.</p>
+                    <h4 className="relative z-10 text-[10px] font-black uppercase tracking-widest text-foreground mb-2">Improvement</h4>
+                    <p className="relative z-10 text-[10px] font-bold text-muted-foreground/60 leading-relaxed uppercase tracking-widest">Guaranteed score upliftment or partial refund.</p>
                   </div>
-                  <div className="bg-white p-7 rounded-[2.2rem] border border-border/30 shadow-sm hover:shadow-xl transition-shadow group">
-                    <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="bg-white p-7 rounded-[2.2rem] border border-border/30 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+                    <div className="relative z-10 w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                       <Award className="w-5 h-5" />
                     </div>
-                    <h4 className="text-[10px] font-black uppercase tracking-widest text-foreground mb-2">Curriculum</h4>
-                    <p className="text-[10px] font-bold text-muted-foreground/60 leading-relaxed uppercase tracking-widest">Access to proprietary digital notes & ppts.</p>
+                    <h4 className="relative z-10 text-[10px] font-black uppercase tracking-widest text-foreground mb-2">Curriculum</h4>
+                    <p className="relative z-10 text-[10px] font-bold text-muted-foreground/60 leading-relaxed uppercase tracking-widest">Access to proprietary digital notes & ppts.</p>
                   </div>
                 </div>
               </div>
@@ -169,12 +176,13 @@ export function TutorProfile() {
                   <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 underline underline-offset-[12px] decoration-primary/20">Specialized Tracks</h3>
                   <div className="grid grid-cols-1 gap-4">
                     {tutor.subjects.map(tag => (
-                      <div key={tag} className="p-6 bg-white border border-border/40 rounded-[1.8rem] flex items-center justify-between group hover:border-primary/50 transition-all cursor-default shadow-sm hover:shadow-xl">
-                        <div className="flex items-center gap-5">
+                      <div key={tag} className="p-6 bg-white border border-border/40 rounded-[1.8rem] flex items-center justify-between group hover:border-primary/50 transition-all cursor-default shadow-sm hover:shadow-xl relative overflow-hidden">
+                         <div className="absolute inset-0 opacity-[0.02] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+                        <div className="relative z-10 flex items-center gap-5">
                           <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                          <span className="text-sm font-extrabold text-foreground uppercase tracking-tight">{tag}</span>
+                          <span className="text-sm font-extrabold text-foreground uppercase tracking-tight italic">{tag}</span>
                         </div>
-                        <ChevronLeft className="w-4 h-4 text-muted-foreground/30 rotate-180" />
+                        <ArrowRight className="relative z-10 w-5 h-5 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                       </div>
                     ))}
                   </div>
@@ -185,11 +193,12 @@ export function TutorProfile() {
             {activeTab === "reviews" && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-6 duration-700">
                 {reviews.map((rev, i) => (
-                  <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-border/40 shadow-sm relative overflow-hidden">
+                  <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-border/40 shadow-sm relative overflow-hidden group">
+                    <div className="absolute inset-0 opacity-[0.01] pointer-events-none group-hover:opacity-[0.03] transition-opacity" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
                     <div className="absolute top-0 left-0 w-1.5 h-full bg-primary/20" />
-                    <div className="flex justify-between items-center mb-6">
+                    <div className="relative z-10 flex justify-between items-center mb-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center text-primary font-black text-sm uppercase">
+                        <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center text-primary font-black text-sm uppercase shadow-inner">
                           {rev.name[0]}
                         </div>
                         <div>
@@ -203,7 +212,7 @@ export function TutorProfile() {
                         ))}
                       </div>
                     </div>
-                    <p className="text-sm font-medium text-foreground/80 leading-relaxed italic">"{rev.text}"</p>
+                    <p className="relative z-10 text-sm font-medium text-foreground/80 leading-relaxed italic">"{rev.text}"</p>
                   </div>
                 ))}
               </div>
@@ -212,7 +221,7 @@ export function TutorProfile() {
             {activeTab === "demo" && (
               <div className="animate-in fade-in slide-in-from-bottom-6 duration-700">
                 <div className="relative aspect-video rounded-[2.8rem] overflow-hidden group shadow-2xl shadow-primary/20">
-                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-110 transition-transform duration-[4s]" />
+                  <div className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-[4s]" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})` }} />
                   <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center gap-6">
                     <button className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-xl border border-white/40 flex items-center justify-center shadow-3xl hover:bg-white/40 group active:scale-95 transition-all">
                       <Play className="w-10 h-10 text-white fill-white ml-2" />
@@ -220,9 +229,10 @@ export function TutorProfile() {
                     <p className="text-[10px] font-black text-white/80 uppercase tracking-[0.4em] animate-pulse">Preview Lecture</p>
                   </div>
                 </div>
-                <div className="mt-10 p-8 bg-white border border-border/40 rounded-[2.5rem] text-center shadow-xl shadow-black/[0.02]">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-3">Academic Showcase</h4>
-                  <p className="text-base font-extrabold text-foreground font-heading">Thermodynamics: The Bridge to Excellence</p>
+                <div className="mt-10 p-8 bg-white border border-border/40 rounded-[2.5rem] text-center shadow-xl shadow-black/[0.02] relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+                  <h4 className="relative z-10 text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-3">Academic Showcase</h4>
+                  <p className="relative z-10 text-base font-extrabold text-foreground font-heading italic">Thermodynamics: The Bridge to Excellence</p>
                 </div>
               </div>
             )}
@@ -230,17 +240,19 @@ export function TutorProfile() {
         </div>
 
         {/* Dynamic Float Action Bar */}
-        <div className="fixed bottom-10 left-8 right-8 z-[100]">
-          <div className="bg-white/70 backdrop-blur-3xl border border-white p-3.5 rounded-[2.5rem] shadow-[0_25px_60px_-15px_rgba(0,102,255,0.25)] flex items-center gap-4">
+        <div className="fixed bottom-10 left-8 right-8 z-[100] animate-in slide-in-from-bottom-full duration-1000 delay-300">
+          <div className="bg-white/70 backdrop-blur-3xl border border-white p-3.5 rounded-[2.5rem] shadow-[0_45px_100px_-20px_rgba(0,102,255,0.3)] flex items-center gap-4 relative overflow-hidden">
+             <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url(${BG_IMAGE_PROFILE})`, backgroundSize: 'cover' }} />
+             
              <button 
               onClick={() => navigate(`/student/chat/1`)}
-              className="w-16 h-16 rounded-[1.8rem] bg-secondary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
+              className="relative z-10 w-16 h-16 rounded-[1.8rem] bg-secondary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
             >
               <MessageCircle className="w-7 h-7" />
             </button>
             <button 
               onClick={() => navigate(`/student/booking/1`)}
-              className="flex-1 py-5 bg-primary text-white rounded-[1.8rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+              className="relative z-10 flex-1 py-5 bg-primary text-white rounded-[1.8rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
             >
               Secure Masterclass
               <ArrowRight className="w-4 h-4" />

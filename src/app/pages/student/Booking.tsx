@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import { MobileContainer } from "../../components/MobileContainer";
 import { ChevronLeft, Calendar, Clock, BookOpen, ShieldCheck, ArrowRight } from "lucide-react";
 
+const BG_IMAGE = "https://i.pinimg.com/736x/31/64/ec/3164ec5cae289fa56665b2f358ae996b.jpg";
+
 const timeSlots = [
   "09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", 
   "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM",
@@ -27,19 +29,22 @@ export function Booking() {
         <div className="px-8 pt-16 pb-12 bg-white border-b border-border/40 rounded-b-[3rem] shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[120px] -mr-32 -mt-32" />
           
+          {/* Subtle Background Texture */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url(${BG_IMAGE})`, backgroundSize: 'cover' }} />
+          
           <button 
             onClick={() => navigate(-1)} 
-            className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center mb-10 active:scale-90 transition-transform shadow-inner text-primary"
+            className="relative z-10 w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center mb-10 active:scale-90 transition-transform shadow-inner text-primary"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
-          <p className="text-[10px] font-black text-primary uppercase tracking-[0.5em] mb-3 italic">Consultation Setup</p>
-          <h1 className="text-4xl font-extrabold text-foreground font-heading tracking-tighter leading-none mb-4">
+          <p className="relative z-10 text-[10px] font-black text-primary uppercase tracking-[0.5em] mb-3 italic">Consultation Setup</p>
+          <h1 className="relative z-10 text-4xl font-extrabold text-foreground font-heading tracking-tighter leading-none mb-4">
             Book Elite <br/><span className="text-primary italic">Session</span>
           </h1>
           
-          <div className="flex items-center gap-3 bg-secondary/50 w-fit px-4 py-2 rounded-full border border-primary/5">
+          <div className="relative z-10 flex items-center gap-3 bg-secondary/50 w-fit px-4 py-2 rounded-full border border-primary/5">
                 <ShieldCheck className="w-4 h-4 text-primary" />
                 <span className="text-[9px] font-extrabold text-primary uppercase tracking-widest leading-none">Secured Reservation</span>
           </div>
@@ -53,8 +58,11 @@ export function Booking() {
               <p className="text-[10px] font-bold text-primary italic">View All Markets</p>
             </div>
             
-            <div className="bg-white rounded-[2.5rem] p-6 shadow-2xl shadow-black/[0.03] border border-border/40">
-                <div className="grid grid-cols-7 gap-2 mb-4">
+            <div className="bg-white rounded-[2.5rem] p-6 shadow-2xl shadow-black/[0.03] border border-border/40 relative overflow-hidden group">
+                {/* Subtle Texture for Calendar */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none group-hover:opacity-[0.04] transition-opacity duration-1000" style={{ backgroundImage: `url(${BG_IMAGE})`, backgroundSize: 'cover' }} />
+                
+                <div className="relative z-10 grid grid-cols-7 gap-2 mb-4">
                 {["M", "T", "W", "T", "F", "S", "S"].map((day, i) => (
                     <div key={i} className="text-center text-[10px] font-black py-2 text-muted-foreground/30 uppercase tracking-widest">
                     {day}
@@ -62,7 +70,7 @@ export function Booking() {
                 ))}
                 </div>
                 
-                <div className="grid grid-cols-7 gap-3">
+                <div className="relative z-10 grid grid-cols-7 gap-3">
                 {[24, 25, 26, 27, 28, 29, 1].map((date) => {
                     const isSelected = date === selectedDate;
                     const isCurrent = date === 24;
@@ -124,8 +132,10 @@ export function Booking() {
                     onClick={() => setSelectedDuration(duration)}
                     className={`p-6 rounded-[2.2rem] flex items-center justify-between transition-all border-2 overflow-hidden relative group ${isSelected ? "bg-white border-primary shadow-2xl shadow-primary/10 -translate-y-1" : "bg-white border-border/20"}`}
                   >
+                    {isSelected && <div className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none rotate-12" style={{ backgroundImage: `url(${BG_IMAGE})`, backgroundSize: 'cover' }} />}
                     {isSelected && <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-16 -mt-16" />}
-                    <div className="flex items-center gap-5">
+                    
+                    <div className="relative z-10 flex items-center gap-5">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${isSelected ? "bg-primary text-white" : "bg-secondary text-primary"}`}>
                             <Clock className="w-5 h-5" />
                         </div>
@@ -136,7 +146,7 @@ export function Booking() {
                             <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest opacity-40">Immersion Level {duration.value === 90 ? "MAX" : "Standard"}</p>
                         </div>
                     </div>
-                    <div className="text-right">
+                    <div className="relative z-10 text-right">
                         <div className={`text-xl font-extrabold font-heading italic leading-none transition-colors ${isSelected ? "text-primary" : "text-foreground"}`}>
                         ₹{duration.price}
                         </div>
@@ -149,12 +159,14 @@ export function Booking() {
 
           {/* Luxury Account Summary */}
           <div className="bg-white rounded-[2.8rem] p-10 border border-border/40 shadow-2xl shadow-black/[0.04] relative overflow-hidden group">
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none group-hover:opacity-[0.07] transition-opacity duration-1000" style={{ backgroundImage: `url(${BG_IMAGE})`, backgroundSize: 'cover' }} />
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl -mr-24 -mb-24" />
-            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 underline underline-offset-[12px] decoration-primary/20">
+            
+            <h3 className="relative z-10 text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 underline underline-offset-[12px] decoration-primary/20">
               Transaction Details
             </h3>
             
-            <div className="space-y-6">
+            <div className="relative z-10 space-y-6">
               <div className="flex justify-between items-center group">
                 <span className="text-[10px] font-black text-muted-foreground/40 uppercase tracking-widest">Faculty Member</span>
                 <span className="text-sm font-extrabold text-foreground italic">Dr. Priya Sharma</span>
@@ -187,10 +199,13 @@ export function Booking() {
         <div className="fixed bottom-10 left-8 right-8 z-[100]">
           <button
             onClick={() => navigate("/student/confirmation")}
-            className="w-full py-6 bg-primary text-white rounded-[2rem] font-black uppercase text-[10px] tracking-[0.4em] shadow-[0_25px_60px_-15px_rgba(0,102,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group"
+            className="w-full py-6 bg-primary text-white rounded-[2rem] font-black uppercase text-[10px] tracking-[0.4em] shadow-[0_25px_60px_-15px_rgba(0,102,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group overflow-hidden relative"
           >
-            Authorize Payment
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url(${BG_IMAGE})`, backgroundSize: 'cover' }} />
+            <span className="relative z-10 flex items-center gap-3">
+                Authorize Payment
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </button>
         </div>
       </div>
