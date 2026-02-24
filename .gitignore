@@ -1,0 +1,125 @@
+############################
+# OS FILES
+############################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+############################
+# LOG FILES
+############################
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+############################
+# ENV FILES (IMPORTANT)
+############################
+.env
+.env.*
+!.env.example
+
+############################
+# NODE / REACT
+############################
+node_modules/
+dist/
+build/
+.next/
+out/
+.cache/
+coverage/
+
+############################
+# VITE
+############################
+.vite
+
+############################
+# PYTHON
+############################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+.venv/
+venv/
+env/
+ENV/
+pip-wheel-metadata/
+
+############################
+# FASTAPI / UVICORN
+############################
+*.pid
+
+############################
+# ANDROID / REACT NATIVE
+############################
+android/.gradle/
+android/build/
+android/app/build/
+*.keystore
+*.jks
+local.properties
+
+############################
+# JAVA / GRADLE
+############################
+.gradle/
+build/
+
+############################
+# DOCKER
+############################
+.docker/
+docker-data/
+*.tar
+
+############################
+# VS CODE
+############################
+.vscode/
+.history/
+
+############################
+# IDE FILES
+############################
+.idea/
+*.iml
+
+############################
+# TEST / COVERAGE
+############################
+.coverage
+htmlcov/
+.pytest_cache/
+
+############################
+# TEMP FILES
+############################
+tmp/
+temp/
+*.tmp
+
+############################
+# DATABASE BACKUPS
+############################
+*.sql
+*.dump
+*.backup
+
+############################
+# LARGE MEDIA FILES
+############################
+*.mp4
+*.mov
+*.zip
+*.rar
+*.7z
+*.iso
