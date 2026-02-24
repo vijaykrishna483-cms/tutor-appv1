@@ -19,7 +19,10 @@ const todaySessions = [
   { id: 2, student: "Priya Sharma", subject: "Pure Mathematics", time: "4:30 PM", type: "offline" },
 ];
 
+import { useNavigate } from "react-router";
+
 export function TeacherDashboard() {
+  const navigate = useNavigate();
   const [isAvailable, setIsAvailable] = useState(true);
 
   return (
@@ -122,7 +125,10 @@ export function TeacherDashboard() {
                     )}
                   </div>
                 </div>
-                <button className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-xl shadow-primary/30 hover:scale-110 active:scale-95 transition-all relative z-10">
+                <button 
+                  onClick={() => navigate(`/student/session/${session.id}`)}
+                  className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-xl shadow-primary/30 hover:scale-110 active:scale-95 transition-all relative z-10"
+                >
                    <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" />
                 </button>
               </div>

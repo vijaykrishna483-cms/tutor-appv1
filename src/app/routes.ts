@@ -16,6 +16,7 @@ import { TeacherDashboard } from "./pages/teacher/TeacherDashboard";
 
 import { Profile } from "./pages/student/Profile";
 import { TeacherProfile } from "./pages/teacher/TeacherProfile";
+import { LiveSession } from "./pages/student/LiveSession";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
       { path: "student/chat/:id", Component: Chat },
       { path: "student/booking/:id", Component: Booking },
       { path: "student/confirmation", Component: PaymentConfirmation },
+      { path: "student/session/:id", Component: LiveSession },
       { path: "student/profile", Component: Profile },
       { path: "teacher/onboarding", Component: TeacherOnboarding },
       { path: "teacher/create-profile", Component: TeacherProfileCreation },
