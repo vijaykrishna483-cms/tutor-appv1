@@ -20,6 +20,7 @@ const todaySessions = [
 ];
 
 import { useNavigate } from "react-router";
+import { NotificationCenter } from "../../components/NotificationCenter";
 
 export function TeacherDashboard() {
   const navigate = useNavigate();
@@ -44,10 +45,7 @@ export function TeacherDashboard() {
                 </h1>
               </div>
             </div>
-            <button className="w-14 h-14 rounded-[1.5rem] bg-secondary flex items-center justify-center relative hover:scale-105 active:scale-95 transition-all shadow-inner">
-              <Bell className="w-6 h-6 text-primary" />
-              <div className="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-destructive border-[3px] border-white shadow-lg" />
-            </button>
+            <NotificationCenter />
           </div>
 
           {/* Status Console */}

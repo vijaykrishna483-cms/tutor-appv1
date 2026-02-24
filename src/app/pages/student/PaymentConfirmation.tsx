@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { MobileContainer } from "../../components/MobileContainer";
-import { CheckCircle, Calendar, Home, Sparkles, Share2 } from "lucide-react";
+import { CheckCircle, Calendar, Home, Sparkles, Share2, Video } from "lucide-react";
 import { motion } from "motion/react";
 
 export function PaymentConfirmation() {
@@ -80,7 +80,15 @@ export function PaymentConfirmation() {
             className="w-full space-y-4"
           >
             <button
+              onClick={() => navigate("/student/session/1")}
               className="w-full py-6 rounded-[2rem] bg-primary text-white font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center gap-3 shadow-2xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all"
+            >
+              <Video className="w-5 h-5 flex-shrink-0" />
+              Join Masterclass Now
+            </button>
+
+            <button
+              className="w-full py-6 rounded-[2rem] bg-secondary text-primary font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center gap-3 hover:bg-primary/10 transition-all border border-primary/10"
             >
               <Calendar className="w-5 h-5 flex-shrink-0" />
               Sync to Calendar

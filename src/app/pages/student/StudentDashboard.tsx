@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router";
 import { MobileContainer } from "../../components/MobileContainer";
 import { BottomNav } from "../../components/BottomNav";
-import { Search, Star, Video, ChevronRight, MapPin, Bell, IndianRupee, ArrowRight } from "lucide-react";
+import { Search, Star, Video, ChevronRight, MapPin, IndianRupee, ArrowRight } from "lucide-react";
+import { NotificationCenter } from "../../components/NotificationCenter";
 
 const BG_IMAGE = "https://i.pinimg.com/736x/31/64/ec/3164ec5cae289fa56665b2f358ae996b.jpg";
 
@@ -29,10 +30,7 @@ export function StudentDashboard() {
                 </div>
               </div>
             </div>
-            <button className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center relative hover:scale-105 transition-all">
-              <Bell className="w-5 h-5 text-primary" />
-              <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-destructive border-2 border-white" />
-            </button>
+            <NotificationCenter />
           </div>
 
           <h1 className="relative text-4xl font-extrabold text-foreground mb-1 font-heading tracking-tighter leading-[1.1]">
